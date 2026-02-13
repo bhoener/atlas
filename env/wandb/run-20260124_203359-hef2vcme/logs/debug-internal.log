@@ -1,0 +1,11 @@
+{"time":"2026-01-24T20:34:01.7241593-08:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2026-01-24T20:34:01.9421386-08:00","level":"INFO","msg":"stream: created new stream","id":"hef2vcme"}
+{"time":"2026-01-24T20:34:01.9421386-08:00","level":"INFO","msg":"handler: started","stream_id":"hef2vcme"}
+{"time":"2026-01-24T20:34:01.9481814-08:00","level":"INFO","msg":"stream: started","id":"hef2vcme"}
+{"time":"2026-01-24T20:34:01.9481814-08:00","level":"INFO","msg":"writer: started","stream_id":"hef2vcme"}
+{"time":"2026-01-24T20:34:01.9481814-08:00","level":"INFO","msg":"sender: started","stream_id":"hef2vcme"}
+{"time":"2026-01-24T20:34:15.5810341-08:00","level":"INFO","msg":"stream: closing","id":"hef2vcme"}
+{"time":"2026-01-24T20:34:15.9133146-08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-01-24T20:34:16.1038149-08:00","level":"INFO","msg":"handler: closed","stream_id":"hef2vcme"}
+{"time":"2026-01-24T20:34:16.1043172-08:00","level":"INFO","msg":"sender: closed","stream_id":"hef2vcme"}
+{"time":"2026-01-24T20:34:16.1043172-08:00","level":"INFO","msg":"stream: closed","id":"hef2vcme"}

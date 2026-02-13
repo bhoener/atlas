@@ -1,0 +1,22 @@
+Wandb run started
+Optimizers Created
+Dataloader reset
+Beginning Training
+====================================================================================================
+Model Parameters: 32.1M
+{'d_model': 256, 'n_heads': 8, 'n_layers': 8, 'vocab_size': 50304, 'seq_len': 128, 'r': 4, 'p': 2, 'max_steps': 1000000, 'batch_size': 32, 'adam_lr': 0.0003, 'muon_lr': 0.0003}
+====================================================================================================
+step 0 | loss 10.8256 | norm 1.6555 | time 2610.1425ms
+step 10 | loss 10.6428 | norm 16.1391 | time 1406.1007ms
+step 20 | loss 10.4155 | norm 74.3688 | time 1397.9352ms
+step 30 | loss 10.1378 | norm 177.0233 | time 1411.1798ms
+step 40 | loss 9.9645 | norm 218.5004 | time 1420.1045ms
+step 50 | loss 9.6453 | norm 467.9069 | time 1400.8048ms
+step 60 | loss 9.4146 | norm 35.2640 | time 2408.7532ms
+step 70 | loss 9.0842 | norm 98.6773 | time 1598.2037ms
+step 80 | loss 9.0166 | norm 123.1002 | time 1475.8191ms
+step 90 | loss 8.9048 | norm 202.9969 | time 1404.4876ms
+step 100 | loss 8.9233 | norm 21.2637 | time 1417.9096ms
+step 110 | loss 8.4087 | norm 167.1847 | time 1504.5938ms
+step 120 | loss 8.5610 | norm 67.8090 | time 1595.1059ms
+step 130 | loss 8.1926 | norm 70.1045 | time 1581.1086ms

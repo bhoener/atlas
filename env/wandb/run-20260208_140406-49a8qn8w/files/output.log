@@ -1,0 +1,55 @@
+Wandb run started
+Optimizers Created
+Dataloader reset
+Beginning Training
+====================================================================================================
+Model Parameters: 32.1M
+{'d_model': 256, 'n_heads': 8, 'n_layers': 8, 'vocab_size': 50304, 'seq_len': 128, 'r': 4, 'p': 2, 'max_steps': 10000, 'batch_size': 2, 'adam_lr': 0.0003, 'muon_lr': 0.0003}
+====================================================================================================
+step 0 | loss 10.8261 | norm 39.3031 | time 525.1093ms
+step 10 | loss 10.6836 | norm 639144.2500 | time 219.0862ms
+step 20 | loss 10.5519 | norm 314.3625 | time 214.0722ms
+step 30 | loss 10.3091 | norm 89.6167 | time 218.9884ms
+step 40 | loss 10.2153 | norm 2277932.7500 | time 210.8188ms
+step 50 | loss 9.7711 | norm 1170.3434 | time 216.0187ms
+step 60 | loss 9.7926 | norm 266.5747 | time 219.0397ms
+Traceback (most recent call last):
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 366, in <module>
+    if __name__ == "__main__":
+        ^^^^^^
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 343, in main
+    logits = model(xs)
+             ^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\nn\modules\module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\nn\modules\module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 253, in forward
+    x = layer(x)
+        ^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\nn\modules\module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\nn\modules\module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 214, in forward
+    x = x + F.layer_norm(self.attn(x), x.size())
+                         ^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\nn\modules\module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\nn\modules\module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 179, in forward
+    causal_polysketch_attention(Q, K, V, self.d_key, self.r, self.p)
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 112, in causal_polysketch_attention
+    return fast_lt_mul(phi_Q, phi_K, V) / D_tilde  # (B, H, L, h)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\utils\_device.py", line 105, in __torch_function__
+    def __torch_function__(self, func, types, args=(), kwargs=None):
+
+KeyboardInterrupt

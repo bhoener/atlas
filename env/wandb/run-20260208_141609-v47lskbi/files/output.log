@@ -1,0 +1,117 @@
+Wandb run started
+Optimizers Created
+Dataloader reset
+Beginning Training
+====================================================================================================
+Model Parameters: 32.1M
+{'d_model': 256, 'n_heads': 8, 'n_layers': 8, 'vocab_size': 50304, 'seq_len': 128, 'r': 4, 'p': 2, 'max_steps': 10000, 'batch_size': 2, 'adam_lr': 0.0003, 'muon_lr': 0.0003}
+====================================================================================================
+out_proj.weight tensor(0.5096, device='cuda:0')
+step 0 | loss 10.8257 | norm 7.2402 | time 593.5519ms
+decoder_stack.0.attn.wq.weight tensor(4.2094, device='cuda:0')
+out_proj.weight tensor(0.5334, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(226.5017, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(6.6991, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(38333.0664, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(20.4529, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(5.6282, device='cuda:0')
+decoder_stack.1.attn.wk.weight tensor(33.4455, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(1.6195, device='cuda:0')
+out_proj.weight tensor(0.2689, device='cuda:0')
+step 10 | loss 10.7272 | norm 7.8188 | time 222.6455ms
+decoder_stack.0.attn.wk.weight tensor(1.1254, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(1587.4833, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(3.2459e+08, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(51.6338, device='cuda:0')
+decoder_stack.1.attn.wk.weight tensor(2872.3535, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(60.1809, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(100.8867, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(4872.9336, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(353.2770, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(587.7711, device='cuda:0')
+step 20 | loss 10.5567 | norm 11266.7539 | time 222.9099ms
+decoder_stack.0.attn.wk.weight tensor(1905.6553, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(427.3177, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(1.0245, device='cuda:0')
+decoder_stack.3.attn.wq.weight tensor(4425.7686, device='cuda:0')
+decoder_stack.1.attn.wk.weight tensor(49.7981, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(7.2916, device='cuda:0')
+decoder_stack.1.attn.wk.weight tensor(397.4656, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(4.0523, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(149.5238, device='cuda:0')
+out_proj.weight tensor(0.3972, device='cuda:0')
+step 30 | loss 10.3680 | norm 12.0821 | time 228.9705ms
+decoder_stack.0.attn.wk.weight tensor(77498224., device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(16185.3135, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(1553.1548, device='cuda:0')
+decoder_stack.1.attn.wk.weight tensor(3.5153, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(8056.0254, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(78643.5234, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(4866.4399, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(1.4568, device='cuda:0')
+decoder_stack.1.attn.wk.weight tensor(833.9221, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(5.9216, device='cuda:0')
+step 40 | loss 10.2300 | norm 185.6821 | time 228.2004ms
+decoder_stack.0.attn.wk.weight tensor(472241.7812, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(1.6478, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(42196.7539, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(9890069., device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(2890.9133, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(409.3672, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(385.6278, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(2.7714, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(4138.0830, device='cuda:0')
+decoder_stack.2.attn.wq.weight tensor(178.0749, device='cuda:0')
+step 50 | loss 9.7325 | norm 8577.3135 | time 221.1957ms
+decoder_stack.1.attn.wq.weight tensor(6258.3638, device='cuda:0')
+out_proj.weight tensor(0.5843, device='cuda:0')
+decoder_stack.3.attn.wq.weight tensor(0.6740, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(9.8608, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(691.0692, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(270.0910, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(37.6428, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(41452.8203, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(36.4445, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(427.2050, device='cuda:0')
+step 60 | loss 10.2640 | norm 10619.1973 | time 226.9096ms
+decoder_stack.0.attn.wq.weight tensor(32.0998, device='cuda:0')
+decoder_stack.5.attn.wq.weight tensor(297.6045, device='cuda:0')
+decoder_stack.1.attn.wq.weight tensor(977710.1250, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(9.3679, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(91889.9688, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(77.8397, device='cuda:0')
+decoder_stack.2.attn.wq.weight tensor(119.5993, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(113.1038, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(48.3114, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(32.3382, device='cuda:0')
+step 70 | loss 9.8007 | norm 565.9882 | time 220.3135ms
+decoder_stack.0.attn.wq.weight tensor(685.2975, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(1407.2819, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(415.7398, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(51299.3203, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(58472.4531, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(79.6495, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(137.5628, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(12.9293, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(950.3659, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(51.7874, device='cuda:0')
+step 80 | loss 9.4952 | norm 1308.2605 | time 222.5368ms
+decoder_stack.0.attn.wk.weight tensor(230.2104, device='cuda:0')
+Traceback (most recent call last):
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 380, in <module>
+    main()
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 367, in main
+    optim.step()
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\optim\optimizer.py", line 510, in wrapper
+    with torch.autograd.profiler.record_function(profile_name):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\autograd\profiler.py", line 801, in __enter__
+    self.record = torch.ops.profiler._record_function_enter_new(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\_ops.py", line 1258, in __call__
+    return self._op(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\utils\_device.py", line 105, in __torch_function__
+    def __torch_function__(self, func, types, args=(), kwargs=None):
+
+KeyboardInterrupt

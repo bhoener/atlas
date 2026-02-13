@@ -1,0 +1,35 @@
+Wandb run started
+Optimizers Created
+Dataloader reset
+Beginning Training
+====================================================================================================
+Model Parameters: 32.1M
+{'d_model': 256, 'n_heads': 8, 'n_layers': 8, 'vocab_size': 50304, 'seq_len': 128, 'r': 4, 'p': 2, 'max_steps': 10000, 'batch_size': 2, 'adam_lr': 0.0003, 'muon_lr': 0.0003}
+====================================================================================================
+step 0 | loss 1006.0635 | norm 10354.8301 | time 643.9772ms
+step 10 | loss 984.4356 | norm 95412.8359 | time 213.3093ms
+step 20 | loss 931.7484 | norm 38743.6289 | time 211.5517ms
+step 30 | loss 939.5543 | norm 2007.5557 | time 211.6349ms
+step 40 | loss 912.3286 | norm 37498.5195 | time 216.4533ms
+Traceback (most recent call last):
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 365, in <module>
+    main()
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 348, in main
+    loss.backward()
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\_tensor.py", line 620, in backward
+    return handle_torch_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\overrides.py", line 1734, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\utils\_device.py", line 109, in __torch_function__
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\_tensor.py", line 629, in backward
+    torch.autograd.backward(
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\autograd\__init__.py", line 364, in backward
+    _engine_run_backward(
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\autograd\graph.py", line 865, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

@@ -1,0 +1,22 @@
+Dataloader reset
+Beginning Training
+====================================================================================================
+Model Parameters: 162.7M
+{'d_model': 768, 'n_heads': 12, 'n_layers': 12, 'vocab_size': 50304, 'seq_len': 512, 'max_steps': 10000, 'batch_size': 16, 'adam_lr': 0.0003, 'muon_lr': 0.0003}
+====================================================================================================
+Traceback (most recent call last):
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 335, in <module>
+    main()
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 311, in main
+    logits = model(xs)
+             ^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\nn\modules\module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\nn\modules\module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 233, in forward
+    x = x + self.pos_emb(torch.arange(B, L))
+        ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RuntimeError: The size of tensor a (512) must match the size of tensor b (496) at non-singleton dimension 1

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 335, in <module>
+    main()
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 289, in main
+    [param for param in model.parameters() if param.ndim() == 2], lr=adam_lr
+                                              ^^^^^^^^^^^^
+TypeError: 'int' object is not callable

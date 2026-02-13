@@ -1,0 +1,40 @@
+{
+  "os": "Windows-11-10.0.26100-SP0",
+  "python": "CPython 3.12.10",
+  "startedAt": "2026-02-11T01:47:54.174487Z",
+  "program": "E:\\Other\\ATLAS\\env\\src\\linear_transformer.py",
+  "codePath": "env\\src\\linear_transformer.py",
+  "codePathLocal": "src\\linear_transformer.py",
+  "git": {
+    "remote": "https://github.com/bhoener/atlas.git",
+    "commit": "36e2e83ac18fd4daa08ca0eeb86b96332f69b3ef"
+  },
+  "email": "brodiehoener@icloud.com",
+  "root": "E:\\Other\\ATLAS\\env",
+  "host": "MSI",
+  "executable": "C:\\Users\\brodi\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+  "cpu_count": 16,
+  "cpu_count_logical": 24,
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "4000750497792",
+      "used": "2134728790016"
+    }
+  },
+  "memory": {
+    "total": "34192588800"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 4060 Ti",
+      "memoryTotal": "17175674880",
+      "cudaCores": 4352,
+      "architecture": "Ada",
+      "uuid": "GPU-6dba68c7-bf17-a382-3cea-b36a6ebee8a9"
+    }
+  ],
+  "cudaVersion": "12.8",
+  "writerId": "rd96p2vsxbqs6x8pw9y5x0zlqiuqkq5o"
+}

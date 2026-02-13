@@ -1,0 +1,80 @@
+Wandb run started
+Optimizers Created
+Dataloader reset
+Beginning Training
+====================================================================================================
+Model Parameters: 32.1M
+{'d_model': 256, 'n_heads': 8, 'n_layers': 8, 'vocab_size': 50304, 'seq_len': 128, 'r': 4, 'p': 2, 'max_steps': 10000, 'batch_size': 2, 'adam_lr': 0.0003, 'muon_lr': 0.0003}
+====================================================================================================
+tensor(0.0275, device='cuda:0', grad_fn=<MaxBackward1>)
+step 0 | loss 10.8258 | norm 5.9532 | time 553.3493ms
+tensor(0.2160, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(0.7061, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(0.6022, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(0.7380, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(1.5747, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(1.1333, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(3.3925, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(2.0392, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(2.5595, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(1.7833, device='cuda:0', grad_fn=<MaxBackward1>)
+step 10 | loss 10.6865 | norm 168.2175 | time 215.5004ms
+tensor(1.8496, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(1.7190, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(3.6233, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(2.9898, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(2.8801, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(2.7861, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(2.9315, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(3.3188, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(6.2302, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(5.5175, device='cuda:0', grad_fn=<MaxBackward1>)
+step 20 | loss 10.5830 | norm 2019.6461 | time 215.7056ms
+tensor(5.0728, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(4.6529, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(3.9145, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(5.9088, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(3.9861, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(7.8675, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(5.6193, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(5.8109, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(4.9983, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(5.7755, device='cuda:0', grad_fn=<MaxBackward1>)
+step 30 | loss 10.2932 | norm 4632.7627 | time 214.7369ms
+tensor(5.5074, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(6.0382, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(6.3633, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(5.0091, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(12.0582, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(5.2947, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(12.2629, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(6.6848, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(5.7224, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(14.3185, device='cuda:0', grad_fn=<MaxBackward1>)
+step 40 | loss 10.3530 | norm 3833362176.0000 | time 214.1578ms
+tensor(7.2915, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(7.2617, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(8.4981, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(9.1971, device='cuda:0', grad_fn=<MaxBackward1>)
+Traceback (most recent call last):
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 367, in <module>
+    main()
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 350, in main
+    loss.backward()
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\_tensor.py", line 620, in backward
+    return handle_torch_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\overrides.py", line 1734, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\utils\_device.py", line 109, in __torch_function__
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\_tensor.py", line 629, in backward
+    torch.autograd.backward(
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\autograd\__init__.py", line 364, in backward
+    _engine_run_backward(
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\autograd\graph.py", line 865, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

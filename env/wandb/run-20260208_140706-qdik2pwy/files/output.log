@@ -1,0 +1,66 @@
+Wandb run started
+Optimizers Created
+Dataloader reset
+Beginning Training
+====================================================================================================
+Model Parameters: 32.1M
+{'d_model': 256, 'n_heads': 8, 'n_layers': 8, 'vocab_size': 50304, 'seq_len': 128, 'r': 4, 'p': 2, 'max_steps': 10000, 'batch_size': 2, 'adam_lr': 0.0003, 'muon_lr': 0.0003}
+====================================================================================================
+decoder_stack.1.attn.wq.weight tensor(103.1556, device='cuda:0')
+step 0 | loss 10.8262 | norm 3619.7168 | time 585.2447ms
+decoder_stack.0.attn.wk.weight tensor(0.3342, device='cuda:0')
+decoder_stack.1.attn.wq.weight tensor(1.5950, device='cuda:0')
+decoder_stack.3.attn.wq.weight tensor(6.4888, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(348.8352, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(5.5597, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(1.0374, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(22.4870, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(5.7809, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(5.9831, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(21.1696, device='cuda:0')
+step 10 | loss 10.6890 | norm 523.2737 | time 225.8656ms
+decoder_stack.0.attn.wk.weight tensor(116.4408, device='cuda:0')
+decoder_stack.2.attn.wq.weight tensor(4379.2808, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(100398.0156, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(4.5687, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(2933.2717, device='cuda:0')
+decoder_stack.2.attn.wq.weight tensor(10.3669, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(463.1201, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(4.0377e+08, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(150.5740, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(656.8561, device='cuda:0')
+step 20 | loss 10.6012 | norm 18336.9258 | time 226.2223ms
+decoder_stack.0.attn.wk.weight tensor(16.9568, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(8919.8027, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(124.0560, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(14.9180, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(1525.7255, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(162.0141, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(3.9515, device='cuda:0')
+decoder_stack.1.attn.wk.weight tensor(35188.4297, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(18.6416, device='cuda:0')
+decoder_stack.1.attn.wq.weight tensor(133.2758, device='cuda:0')
+step 30 | loss 10.4234 | norm 5266.1411 | time 222.1386ms
+decoder_stack.0.attn.wk.weight tensor(1100.1865, device='cuda:0')
+Traceback (most recent call last):
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 378, in <module>
+    main()
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 351, in main
+    loss.backward()
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\_tensor.py", line 620, in backward
+    return handle_torch_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\overrides.py", line 1734, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\utils\_device.py", line 109, in __torch_function__
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\_tensor.py", line 629, in backward
+    torch.autograd.backward(
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\autograd\__init__.py", line 364, in backward
+    _engine_run_backward(
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\autograd\graph.py", line 865, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

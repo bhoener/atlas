@@ -1,0 +1,18 @@
+Wandb run started
+Optimizers Created
+Dataloader reset
+Beginning Training
+====================================================================================================
+Model Parameters: 162.5M
+{'d_model': 768, 'n_heads': 12, 'n_layers': 12, 'vocab_size': 50304, 'seq_len': 256, 'r': 4, 'p': 2, 'max_steps': 10000, 'batch_size': 4, 'adam_lr': 0.0003, 'muon_lr': 0.0003}
+====================================================================================================
+Traceback (most recent call last):
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 365, in <module>
+    main()
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 349, in main
+    norm = nn.utils.clip_grad_norm_().item()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\nn\utils\clip_grad.py", line 42, in _no_grad_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: clip_grad_norm_() missing 2 required positional arguments: 'parameters' and 'max_norm'

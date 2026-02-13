@@ -1,0 +1,11 @@
+{"time":"2026-02-08T14:02:01.7752291-08:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2026-02-08T14:02:01.9980829-08:00","level":"INFO","msg":"stream: created new stream","id":"db2nscy4"}
+{"time":"2026-02-08T14:02:01.9980829-08:00","level":"INFO","msg":"handler: started","stream_id":"db2nscy4"}
+{"time":"2026-02-08T14:02:01.9996135-08:00","level":"INFO","msg":"stream: started","id":"db2nscy4"}
+{"time":"2026-02-08T14:02:01.9996135-08:00","level":"INFO","msg":"sender: started","stream_id":"db2nscy4"}
+{"time":"2026-02-08T14:02:01.9996135-08:00","level":"INFO","msg":"writer: started","stream_id":"db2nscy4"}
+{"time":"2026-02-08T14:02:12.8732661-08:00","level":"INFO","msg":"stream: closing","id":"db2nscy4"}
+{"time":"2026-02-08T14:02:13.2659182-08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-02-08T14:02:13.4565818-08:00","level":"INFO","msg":"handler: closed","stream_id":"db2nscy4"}
+{"time":"2026-02-08T14:02:13.4570861-08:00","level":"INFO","msg":"sender: closed","stream_id":"db2nscy4"}
+{"time":"2026-02-08T14:02:13.4570861-08:00","level":"INFO","msg":"stream: closed","id":"db2nscy4"}

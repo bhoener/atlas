@@ -1,0 +1,11 @@
+{"time":"2026-01-24T20:38:13.5774088-08:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2026-01-24T20:38:13.7951447-08:00","level":"INFO","msg":"stream: created new stream","id":"halylqnu"}
+{"time":"2026-01-24T20:38:13.7956743-08:00","level":"INFO","msg":"handler: started","stream_id":"halylqnu"}
+{"time":"2026-01-24T20:38:13.7981594-08:00","level":"INFO","msg":"stream: started","id":"halylqnu"}
+{"time":"2026-01-24T20:38:13.7981594-08:00","level":"INFO","msg":"writer: started","stream_id":"halylqnu"}
+{"time":"2026-01-24T20:38:13.7981594-08:00","level":"INFO","msg":"sender: started","stream_id":"halylqnu"}
+{"time":"2026-01-24T20:39:21.9359612-08:00","level":"INFO","msg":"stream: closing","id":"halylqnu"}
+{"time":"2026-01-24T20:39:22.928277-08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-01-24T20:39:23.0737996-08:00","level":"INFO","msg":"handler: closed","stream_id":"halylqnu"}
+{"time":"2026-01-24T20:39:23.074839-08:00","level":"INFO","msg":"sender: closed","stream_id":"halylqnu"}
+{"time":"2026-01-24T20:39:23.074839-08:00","level":"INFO","msg":"stream: closed","id":"halylqnu"}

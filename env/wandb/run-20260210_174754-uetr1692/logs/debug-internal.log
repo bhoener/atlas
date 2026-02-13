@@ -1,0 +1,28 @@
+{"time":"2026-02-10T17:47:58.1081967-08:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2026-02-10T17:48:01.6675023-08:00","level":"INFO","msg":"stream: created new stream","id":"uetr1692"}
+{"time":"2026-02-10T17:48:01.6680061-08:00","level":"INFO","msg":"handler: started","stream_id":"uetr1692"}
+{"time":"2026-02-10T17:48:01.6766524-08:00","level":"INFO","msg":"writer: started","stream_id":"uetr1692"}
+{"time":"2026-02-10T17:48:01.6766524-08:00","level":"INFO","msg":"stream: started","id":"uetr1692"}
+{"time":"2026-02-10T17:48:01.6766524-08:00","level":"INFO","msg":"sender: started","stream_id":"uetr1692"}
+{"time":"2026-02-10T17:52:03.0903646-08:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":526}
+{"time":"2026-02-10T17:52:10.9225173-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 192.168.88.14:49794->35.186.228.49:443: wsarecv: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond."}
+{"time":"2026-02-10T17:52:13.1444454-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/brogrammer/PolySketchFormer/uetr1692/file_stream\": dial tcp 35.186.228.49:443: connectex: An established connection was aborted by the software in your host machine."}
+{"time":"2026-02-10T17:52:13.3979044-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:52:15.4522571-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/brogrammer/PolySketchFormer/uetr1692/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:52:29.4231093-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/brogrammer/PolySketchFormer/uetr1692/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:52:29.4231093-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:52:48.653072-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/brogrammer/PolySketchFormer/uetr1692/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:52:48.653072-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:53:16.3725017-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:53:16.3725017-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/brogrammer/PolySketchFormer/uetr1692/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:53:21.996043-08:00","level":"INFO","msg":"stream: closing","id":"uetr1692"}
+{"time":"2026-02-10T17:53:52.0663263-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:53:52.5777-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/brogrammer/PolySketchFormer/uetr1692/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:54:53.7526742-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:54:53.7526742-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/brogrammer/PolySketchFormer/uetr1692/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:56:01.7171159-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:56:01.7171159-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/brogrammer/PolySketchFormer/uetr1692/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:57:01.7199854-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/brogrammer/PolySketchFormer/uetr1692/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:57:01.7199854-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:58:01.7268402-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2026-02-10T17:58:01.7268402-08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/brogrammer/PolySketchFormer/uetr1692/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}

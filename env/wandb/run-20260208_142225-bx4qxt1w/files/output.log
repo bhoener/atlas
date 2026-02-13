@@ -1,0 +1,201 @@
+Wandb run started
+Optimizers Created
+Dataloader reset
+Beginning Training
+====================================================================================================
+Model Parameters: 32.1M
+{'d_model': 256, 'n_heads': 8, 'n_layers': 8, 'vocab_size': 50304, 'seq_len': 128, 'r': 4, 'p': 2, 'max_steps': 10000, 'batch_size': 2, 'adam_lr': 0.0003, 'muon_lr': 0.0003}
+====================================================================================================
+step 0 | loss 10.8254 | norm 6.5791 | time 538.7824ms
+step 10 | loss 10.6749 | norm 275.4440 | time 215.3783ms
+step 20 | loss 10.6487 | norm 237112.0938 | time 216.0463ms
+step 30 | loss 10.2929 | norm 61725.9805 | time 218.7746ms
+step 40 | loss 10.0233 | norm 1116.3674 | time 255.1084ms
+step 50 | loss 10.1121 | norm 95685.3906 | time 227.8092ms
+step 60 | loss 9.7125 | norm 1014.0068 | time 230.7668ms
+step 70 | loss 9.4486 | norm 318.8166 | time 228.7076ms
+step 80 | loss 9.6280 | norm 71307.8203 | time 257.7887ms
+step 90 | loss 8.7832 | norm 7053.4302 | time 267.9040ms
+step 100 | loss 9.4111 | norm 374537696.0000 | time 288.6603ms
+step 110 | loss 9.4522 | norm 3519139.2500 | time 220.4564ms
+step 120 | loss 8.5789 | norm 9431.7871 | time 226.0089ms
+step 130 | loss 8.7142 | norm 8607.0391 | time 219.4154ms
+step 140 | loss 8.9326 | norm 1247.5480 | time 223.9890ms
+step 150 | loss 8.2490 | norm 230.1081 | time 218.9627ms
+step 160 | loss 8.4587 | norm 28134.6504 | time 216.2352ms
+step 170 | loss 8.1877 | norm 13101.0068 | time 214.5476ms
+step 180 | loss 8.3051 | norm 1657.5651 | time 223.4044ms
+step 190 | loss 8.0374 | norm 473.7583 | time 247.4771ms
+step 200 | loss 8.5128 | norm 2115.9922 | time 226.8977ms
+step 210 | loss 7.8945 | norm 1220612.3750 | time 223.2120ms
+step 220 | loss 8.4452 | norm 154304.1719 | time 217.2809ms
+step 230 | loss 8.9749 | norm 87340.3516 | time 311.7790ms
+step 240 | loss 7.9014 | norm 644.3539 | time 216.8789ms
+step 250 | loss 7.8262 | norm 222.4638 | time 245.6377ms
+step 260 | loss 8.9453 | norm 418982.7812 | time 231.7033ms
+step 270 | loss 8.3098 | norm 5014.5400 | time 222.8832ms
+step 280 | loss 7.2496 | norm 27.7975 | time 221.2267ms
+step 290 | loss 8.4004 | norm 12.8362 | time 225.1747ms
+step 300 | loss 7.4775 | norm 25.2276 | time 215.5526ms
+step 310 | loss 7.7987 | norm 3523.8772 | time 264.6737ms
+step 320 | loss 8.2046 | norm 486.7180 | time 223.1755ms
+step 330 | loss 7.3541 | norm 7198.0591 | time 224.6823ms
+step 340 | loss 8.6557 | norm 2035946.5000 | time 215.8589ms
+step 350 | loss 8.5978 | norm 4309939.5000 | time 217.4056ms
+step 360 | loss 7.9749 | norm 6794.3696 | time 236.5615ms
+step 370 | loss 8.2967 | norm 37333.4453 | time 226.8245ms
+step 380 | loss 7.4597 | norm 730.3547 | time 224.0665ms
+step 390 | loss 7.7851 | norm 748.2440 | time 217.2663ms
+step 400 | loss 7.9302 | norm 727.0337 | time 216.7039ms
+step 410 | loss 7.4596 | norm 764.3719 | time 218.8578ms
+step 420 | loss 7.5255 | norm 14.3931 | time 223.3002ms
+step 430 | loss 8.0219 | norm 16.2246 | time 224.9455ms
+step 440 | loss 7.2957 | norm 45.6388 | time 221.0994ms
+step 450 | loss 7.3053 | norm 7209.7524 | time 285.7645ms
+step 460 | loss 7.1025 | norm 19.1605 | time 256.7384ms
+step 470 | loss 7.0941 | norm 782.0355 | time 231.6086ms
+step 480 | loss 7.4310 | norm 14.1194 | time 217.2921ms
+step 490 | loss 7.3207 | norm 3581.4019 | time 217.6988ms
+step 500 | loss 7.5472 | norm 50.8037 | time 228.3418ms
+step 510 | loss 9.6001 | norm 17.3848 | time 260.0012ms
+step 520 | loss 8.3517 | norm 60.2619 | time 226.5909ms
+step 530 | loss 7.9552 | norm 9678.8955 | time 224.7026ms
+step 540 | loss 7.7341 | norm 23600.1875 | time 220.5820ms
+step 550 | loss 7.3241 | norm 227.2279 | time 217.0055ms
+step 560 | loss 8.3655 | norm 15.8716 | time 228.0302ms
+step 570 | loss 7.6474 | norm 10.5516 | time 218.8063ms
+step 580 | loss 7.4252 | norm 13.4050 | time 220.0367ms
+step 590 | loss 8.2894 | norm 12.6106 | time 221.8969ms
+step 600 | loss 8.5981 | norm 240668.1562 | time 217.9120ms
+step 610 | loss 7.1425 | norm 10.6421 | time 239.1753ms
+step 620 | loss 7.8716 | norm 347.0530 | time 222.5826ms
+step 630 | loss 7.1210 | norm 10.6405 | time 230.1195ms
+step 640 | loss 7.7730 | norm 11.6364 | time 274.3564ms
+step 650 | loss 7.8352 | norm 33.0635 | time 218.7417ms
+step 660 | loss 7.1731 | norm 464866.4062 | time 227.6807ms
+step 670 | loss 7.3847 | norm 11.6024 | time 225.1954ms
+step 680 | loss 7.0768 | norm 70.4858 | time 236.6698ms
+step 690 | loss 7.2861 | norm 12.7273 | time 213.5417ms
+step 700 | loss 7.3948 | norm 1905.6875 | time 226.8033ms
+step 710 | loss 9.8538 | norm 49.8202 | time 223.2232ms
+step 720 | loss 7.3205 | norm 312.8716 | time 294.2333ms
+step 730 | loss 7.5948 | norm 1670.4551 | time 313.6790ms
+step 740 | loss 7.3362 | norm 136.7320 | time 227.9131ms
+step 750 | loss 6.7303 | norm 613.8864 | time 221.8351ms
+step 760 | loss 7.9592 | norm 115505504.0000 | time 217.5696ms
+step 770 | loss 7.0678 | norm 565.1541 | time 216.0060ms
+step 780 | loss 7.8253 | norm 419.4015 | time 222.9102ms
+step 790 | loss 6.5610 | norm 92.8111 | time 236.3162ms
+step 800 | loss 7.2378 | norm 31.5112 | time 217.7665ms
+step 810 | loss 6.9268 | norm 63.6628 | time 229.8362ms
+step 820 | loss 7.2637 | norm 14.6740 | time 227.6480ms
+step 830 | loss 7.6007 | norm 675.7963 | time 266.7356ms
+step 840 | loss 7.1163 | norm 12.3254 | time 227.1247ms
+step 850 | loss 7.2951 | norm 14.6195 | time 221.5450ms
+step 860 | loss 7.3673 | norm 13.8632 | time 219.1401ms
+step 870 | loss 7.7966 | norm 193.9866 | time 244.8933ms
+step 880 | loss 7.4058 | norm 12.5595 | time 235.0421ms
+step 890 | loss 6.7024 | norm 11.7677 | time 223.8767ms
+step 900 | loss 6.6144 | norm 11.0175 | time 229.0523ms
+step 910 | loss 7.4701 | norm 9197.8945 | time 221.5564ms
+step 920 | loss 6.8563 | norm 11720.6855 | time 224.2730ms
+step 930 | loss 6.8115 | norm 35.1668 | time 217.7272ms
+step 940 | loss 6.8816 | norm 10.9667 | time 219.3875ms
+step 950 | loss 6.5357 | norm 11.2359 | time 229.9917ms
+step 960 | loss 7.0429 | norm 2444.4265 | time 217.5863ms
+step 970 | loss 7.0039 | norm 23.3935 | time 216.3885ms
+step 980 | loss 7.2434 | norm 80.9714 | time 229.4662ms
+step 990 | loss 7.3461 | norm 15.2564 | time 245.2855ms
+step 1000 | loss 6.6733 | norm 27.2126 | time 235.4441ms
+step 1010 | loss 6.9641 | norm 11.8037 | time 218.0600ms
+step 1020 | loss 7.5073 | norm 15.4352 | time 213.3222ms
+step 1030 | loss 7.1515 | norm 40070.9141 | time 212.6081ms
+step 1040 | loss 7.4493 | norm 15795.4717 | time 212.2588ms
+step 1050 | loss 7.7246 | norm 11.8525 | time 211.7085ms
+step 1060 | loss 6.7571 | norm 11.7561 | time 238.9657ms
+step 1070 | loss 7.4212 | norm 14.8767 | time 233.5687ms
+step 1080 | loss 8.0085 | norm 2539.5581 | time 228.3206ms
+step 1090 | loss 7.0273 | norm 13.5509 | time 247.5042ms
+step 1100 | loss 6.8665 | norm 15.8007 | time 245.6985ms
+step 1110 | loss 6.9747 | norm 12.6295 | time 226.8188ms
+step 1120 | loss 6.6548 | norm 17.0718 | time 219.9087ms
+step 1130 | loss 8.0159 | norm 12080.4180 | time 217.0262ms
+step 1140 | loss 6.0647 | norm 16.3035 | time 218.8950ms
+step 1150 | loss 6.8481 | norm 18.3828 | time 216.4235ms
+step 1160 | loss 6.8875 | norm 19.8729 | time 225.4729ms
+step 1170 | loss 7.0382 | norm 12.2355 | time 218.6873ms
+step 1180 | loss 7.5773 | norm 12.2725 | time 221.0937ms
+step 1190 | loss 6.7230 | norm 13.1616 | time 220.8171ms
+step 1200 | loss 7.2248 | norm 13.3285 | time 219.7027ms
+step 1210 | loss 6.7922 | norm 23.8657 | time 219.1985ms
+step 1220 | loss 7.4052 | norm 12.6275 | time 232.4324ms
+step 1230 | loss 6.9404 | norm 157.4693 | time 218.5133ms
+step 1240 | loss 6.8201 | norm 11.7594 | time 229.2118ms
+step 1250 | loss 6.7896 | norm 10.7378 | time 222.0426ms
+step 1260 | loss 6.9330 | norm 9.7117 | time 215.4093ms
+step 1270 | loss 6.3251 | norm 15.1515 | time 224.5996ms
+step 1280 | loss 6.9063 | norm 11.7420 | time 227.5195ms
+step 1290 | loss 7.0268 | norm 376.8687 | time 217.1304ms
+step 1300 | loss 6.7092 | norm 34.6411 | time 217.9270ms
+step 1310 | loss 7.4004 | norm 68761.0703 | time 223.4378ms
+step 1320 | loss 7.0758 | norm 190.6806 | time 220.6268ms
+step 1330 | loss 6.7151 | norm 11.3056 | time 237.2479ms
+step 1340 | loss 6.4543 | norm 33.8972 | time 227.0823ms
+step 1350 | loss 7.2352 | norm 12.0517 | time 226.4347ms
+step 1360 | loss 7.0271 | norm 11.0891 | time 251.2770ms
+step 1370 | loss 7.1102 | norm 11.0469 | time 220.2897ms
+step 1380 | loss 7.0664 | norm 12.9973 | time 218.5519ms
+step 1390 | loss 6.7950 | norm 902.2230 | time 216.9933ms
+step 1400 | loss 6.8887 | norm 11.7684 | time 217.8547ms
+step 1410 | loss 6.8607 | norm 13.6385 | time 250.3517ms
+step 1420 | loss 7.4106 | norm 14.3859 | time 230.8745ms
+step 1430 | loss 7.5295 | norm 105.5748 | time 211.5798ms
+step 1440 | loss 6.8687 | norm 13.3286 | time 213.1953ms
+step 1450 | loss 6.6586 | norm 81.6577 | time 226.9008ms
+step 1460 | loss 7.2769 | norm 12.0032 | time 222.7414ms
+step 1470 | loss 7.4341 | norm 9189.3916 | time 221.5075ms
+step 1480 | loss 6.9608 | norm 109.3150 | time 216.6314ms
+step 1490 | loss 7.1082 | norm 19.5160 | time 236.0449ms
+step 1500 | loss 6.6718 | norm 79.6988 | time 217.8841ms
+step 1510 | loss 7.3800 | norm 17.1832 | time 226.9557ms
+step 1520 | loss 7.3113 | norm 13.9064 | time 222.6312ms
+step 1530 | loss 6.7171 | norm 11.2241 | time 213.0589ms
+step 1540 | loss 6.8629 | norm 11.8266 | time 214.5207ms
+step 1550 | loss 7.3266 | norm 301.0497 | time 212.4002ms
+step 1560 | loss 6.9046 | norm 12.9730 | time 219.3799ms
+step 1570 | loss 6.8373 | norm 21.2997 | time 214.8383ms
+step 1580 | loss 7.3138 | norm 95.0679 | time 221.5841ms
+step 1590 | loss 6.9903 | norm 616.7692 | time 220.8149ms
+step 1600 | loss 6.9216 | norm 12.2104 | time 218.4143ms
+step 1610 | loss 7.0579 | norm 13.9132 | time 212.6493ms
+step 1620 | loss 6.7115 | norm 12.5613 | time 211.6022ms
+step 1630 | loss 6.9041 | norm 16.4129 | time 230.2389ms
+step 1640 | loss 6.7398 | norm 26662.8477 | time 216.2273ms
+step 1650 | loss 7.2673 | norm 11.7921 | time 230.3560ms
+step 1660 | loss 6.5141 | norm 151.1459 | time 232.3265ms
+step 1670 | loss 7.1213 | norm 31.2266 | time 213.6238ms
+step 1680 | loss 6.7910 | norm 12.2828 | time 212.7194ms
+Traceback (most recent call last):
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 376, in <module>
+    if step % save_every == 0:
+    ^^^^^^
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 356, in main
+    / grad_accum_steps
+    ^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\_tensor.py", line 620, in backward
+    return handle_torch_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\overrides.py", line 1734, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\utils\_device.py", line 109, in __torch_function__
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\_tensor.py", line 629, in backward
+    torch.autograd.backward(
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\autograd\__init__.py", line 364, in backward
+    _engine_run_backward(
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\autograd\graph.py", line 865, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

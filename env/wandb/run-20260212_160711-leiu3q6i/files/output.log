@@ -1,0 +1,61 @@
+Wandb run started
+Optimizers Created
+Dataloader reset
+Beginning Training
+====================================================================================================
+Model Parameters: 32.1M
+{'d_model': 256, 'n_heads': 8, 'n_layers': 8, 'vocab_size': 50304, 'seq_len': 128, 'r': 64, 'p': 2, 'max_steps': 1000000, 'batch_size': 32, 'adam_lr': 0.0003, 'muon_lr': 3e-06}
+====================================================================================================
+decoder_stack.0.attn.wq.weight tensor(5.6788e+08, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(3.9096e+10, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(3.3236e+11, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(2.9755e+12, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(4.8490e+11, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(4.6855e+14, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(7.1696e+15, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(1.3583e+09, device='cuda:0')
+step 0 | loss 10.8259 | norm 1534494208.0000 | time 1871.9981ms
+decoder_stack.0.attn.wq.weight tensor(3884350.7500, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(1.2978e+12, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(47379284., device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(1.4180e+17, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(4.1701e+11, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(2.7821e+14, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(1.1002e+12, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(98801488., device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(2.7162e+14, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(4.2021e+13, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(6.0634e+13, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(1.9335e+15, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(2.2086e+09, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(6.0547e+17, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(1.4176e+08, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(2.7171e+10, device='cuda:0')
+decoder_stack.0.attn.wq.weight tensor(3.4552e+09, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(621571.9375, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(50061304., device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(56235.6641, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(6.7195e+08, device='cuda:0')
+decoder_stack.0.attn.wk.weight tensor(3.1528e+08, device='cuda:0')
+Traceback (most recent call last):
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 393, in <module>
+    main()
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 362, in main
+    loss.backward()
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\_tensor.py", line 620, in backward
+    return handle_torch_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\overrides.py", line 1734, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\utils\_device.py", line 109, in __torch_function__
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\_tensor.py", line 629, in backward
+    torch.autograd.backward(
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\autograd\__init__.py", line 364, in backward
+    _engine_run_backward(
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\autograd\graph.py", line 865, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

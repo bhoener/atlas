@@ -1,0 +1,27 @@
+Wandb run started
+Optimizers Created
+Dataloader reset
+Beginning Training
+====================================================================================================
+Model Parameters: 162.5M
+{'d_model': 768, 'n_heads': 12, 'n_layers': 12, 'vocab_size': 50304, 'seq_len': 256, 'r': 4, 'p': 2, 'max_steps': 10000, 'batch_size': 4, 'adam_lr': 0.0003, 'muon_lr': 0.0003}
+====================================================================================================
+torch.float32 torch.int32
+Traceback (most recent call last):
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 367, in <module>
+    main()
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 346, in main
+    F.cross_entropy(logits.view(-1, vocab_size), ys.view(-1))
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\nn\functional.py", line 3490, in cross_entropy
+    return handle_torch_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\overrides.py", line 1734, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\utils\_device.py", line 109, in __torch_function__
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\nn\functional.py", line 3504, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError: "nll_loss_forward_reduce_cuda_kernel_2d_index" not implemented for 'Int'

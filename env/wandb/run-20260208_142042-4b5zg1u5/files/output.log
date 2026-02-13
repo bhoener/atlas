@@ -1,0 +1,10 @@
+Wandb run started
+Optimizers Created
+Dataloader reset
+Beginning Training
+====================================================================================================
+Model Parameters: 32.1M
+{'d_model': 256, 'n_heads': 8, 'n_layers': 8, 'vocab_size': 50304, 'seq_len': 128, 'r': 4, 'p': 2, 'max_steps': 10000, 'batch_size': 2, 'adam_lr': 0.0003, 'muon_lr': 0.0003}
+====================================================================================================
+decoder_stack.0.attn.wk.weight tensor(1.0158, device='cuda:0')
+step 0 | loss 10.8258 | norm 20.8424 | time 9413.0406ms

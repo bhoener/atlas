@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 316, in <module>
+    main()
+  File "E:\Other\ATLAS\env\src\linear_transformer.py", line 284, in main
+    optim = torch.optim.Muon(model.parameters(), lr=lr)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brodi\AppData\Local\Python\pythoncore-3.12-64\Lib\site-packages\torch\optim\_muon.py", line 134, in __init__
+    raise ValueError(
+ValueError: Muon only supports 2D parameters whereas we found a parameter with size: torch.Size([768])
