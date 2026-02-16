@@ -1,8 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import matplotlib.pyplot as plt
-import time
+import train
 from dataloader import DataLoader
 
 
@@ -31,7 +30,7 @@ def poly_sketch_with_negativity(
                 r,
             ),
             generator=gen,
-        ),
+        ).to(A.device),
         torch.randn(
             A.size()[:-2]
             + (
@@ -39,7 +38,7 @@ def poly_sketch_with_negativity(
                 r,
             ),
             generator=gen,
-        ),
+        ).to(A.device),
     )
     return (1 / r) ** 0.5 * ((M_1 @ G_1) * (M_2 @ G_2))
 
@@ -79,7 +78,7 @@ def naive_causal_polysketch_attention(
     qk_similarity = torch.tril(
         phi_Q @ phi_K.permute(0, 1, 3, 2)
     )  # (B, H, L, r^2), (B, H, r^2, L) -> (B, H, L, L)
-    D_tilde = 1.0 + qk_similarity @ torch.ones(L, 1)
+    D_tilde = 1.0 + qk_similarity @ torch.ones(L, 1).to(Q.device)
     # (B, H, L, L), (L, 1) -> (B, H, L, 1)
 
     return D_tilde**-1.0 * (
@@ -109,7 +108,7 @@ def causal_polysketch_attention(
         poly_sketch_non_negative(K, r, p, deterministic=deterministic),
     )  # (B, H, L, r^2)
 
-    D_tilde = 1.0 + fast_lt_mul(phi_Q, phi_K, torch.ones(B, H, L, 1))
+    D_tilde = 1.0 + fast_lt_mul(phi_Q, phi_K, torch.ones(B, H, L, 1).to(Q.device))
     # (B, H, L, r^2) @ (B, H, r^2 , L) -> (B, H, L, L), (B, H, L, 1) -> (B, H, L, 1)
 
     return D_tilde**-1.0 * fast_lt_mul(phi_Q, phi_K, V)  # (B, H, L, h)
@@ -260,132 +259,95 @@ class PolySketchFormer(nn.Module):
 
 
 def main() -> None:
-    use_wandb = True
+    import argparse
 
-    if use_wandb:
-        import wandb
-    import tiktoken
+    parser = argparse.ArgumentParser()
 
-    enc = tiktoken.get_encoding("gpt2")
-
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
-    torch.set_default_device(device)
-    torch.set_float32_matmul_precision("high")
-    print("Device and precision set")
-
-    d_model = 256
-    n_heads = 8
-    n_layers = 8
-    vocab_size = 50304
-    seq_len = 128
-    r = 64
-    p = 2
-
-    max_steps = 1000000
-    batch_size = 4
-    grad_accum_steps = 8
-    adam_lr = 3e-4
-    muon_lr = 3e-6
-
-    log_every = 10
-    save_every = 1000
-
-    save_dir = "models/"
-
-    data_dir = "data/"
+    parser.add_argument("--d_model", type=int, default=256)
+    parser.add_argument("--n_heads", type=int, default=8)
+    parser.add_argument("--n_layers", type=int, default=8)
+    parser.add_argument("--vocab_size", type=int, default=50304)
+    parser.add_argument("--seq_len", type=int, default=128)
+    parser.add_argument("--r", type=int, default=64)
+    parser.add_argument("--p", type=int, default=2)
     
-    compile = True
+    parser.add_argument("--device", type=str, default="cuda")
+
+    parser.add_argument("--max_steps", type=int, default=10000)
+    parser.add_argument("--batch_size", type=int, default=4)
+    parser.add_argument("--grad_accum_steps", type=int, default=8)
+
+    parser.add_argument("--adam_lr", type=float, default=3e-4)
+    parser.add_argument("--muon_lr", type=float, default=3e-6)
+
+    parser.add_argument("--log_every", type=int, default=10)
+    parser.add_argument("--val_every", type=int, default=1000)
+    parser.add_argument("--val_batches", type=int, default=4)
+    parser.add_argument("--save_every", type=int, default=1000)
+
+    parser.add_argument("--save_dir", type=str, default="models/")
+    parser.add_argument("--data_dir", type=str, default="data/")
+    parser.add_argument("--val_data_dir", type=str, default=None)
+
+    parser.add_argument("--compile", type=bool, default=False)
+    parser.add_argument("--use_wandb", type=bool, default=True)
+    parser.add_argument("--wandb_watch", type=bool, default=True)
+    
+    parser.add_argument("--wandb_project_name", type=str, default=None)
+
+    args = parser.parse_args()
+
+    device = torch.device("cuda" if args.device == "cuda" and torch.cuda.is_available() else "cpu")
 
     model = PolySketchFormer(
-        d_model=d_model,
-        n_heads=n_heads,
-        n_layers=n_layers,
-        vocab_size=vocab_size,
-        seq_len=seq_len,
-        r=r,
-        p=p,
+        d_model=args.d_model,
+        n_heads=args.n_heads,
+        n_layers=args.n_layers,
+        vocab_size=args.vocab_size,
+        seq_len=args.seq_len,
+        r=args.r,
+        p=args.p,
+    ).to(device)
+
+    optimizers = [
+        torch.optim.Muon(
+            [param for param in model.parameters() if param.ndim == 2], lr=args.muon_lr
+        ),
+        torch.optim.AdamW(
+            [param for param in model.parameters() if param.ndim != 2], lr=args.adam_lr
+        ),
+    ]
+
+    dl = DataLoader(datapath=args.data_dir, B=args.batch_size, T=args.seq_len, device=device)
+
+    val_dl = (
+        DataLoader(datapath=args.val_data_dir, B=args.batch_size, T=args.seq_len, device=device)
+        if args.val_data_dir is not None
+        else None
     )
     
-    if compile:
-        model = torch.compile(model)
-
-    print("Model created")
-
-    config = {
-        "d_model": d_model,
-        "n_heads": n_heads,
-        "n_layers": n_layers,
-        "vocab_size": vocab_size,
-        "seq_len": seq_len,
-        "r": r,
-        "p": p,
-        "max_steps": max_steps,
-        "batch_size": batch_size * grad_accum_steps,
-        "adam_lr": adam_lr,
-        "muon_lr": muon_lr,
-        "compile": compile,
-    }
-
-    if use_wandb:
-        run = wandb.init(
-            project="PolySketchFormer",
-            config=config,
-        )
-        wandb.watch(model)
-        print("Wandb run started")
-
-    optim = torch.optim.Muon(
-        [param for param in model.parameters() if param.ndim == 2], lr=adam_lr
+    
+    
+    train.train(
+        model=model,
+        optimizers=optimizers,
+        dl=dl,
+        val_dl=val_dl,
+        device=device,
+        compile=args.compile,
+        max_steps=args.max_steps,
+        batch_size=args.batch_size,
+        grad_accum_steps=args.grad_accum_steps,
+        log_every=args.log_every,
+        val_every=args.val_every,
+        val_batches=args.val_batches,
+        save_every=args.save_every,
+        save_dir=args.save_dir,
+        use_wandb=args.use_wandb,
+        wandb_project_name="PolySketchFormer",
+        wandb_watch=args.wandb_watch,
+        wandb_config=args,
     )
-    optim2 = torch.optim.AdamW(
-        [param for param in model.parameters() if param.ndim != 2], lr=muon_lr
-    )
-    print("Optimizers Created")
-
-    dl = DataLoader(datapath=data_dir, B=batch_size, T=seq_len, device=device)
-
-    print("Beginning Training")
-    print("=" * 100)
-    print(f"Model Parameters: {sum(p.numel() for p in model.parameters()) / 1e6:.1f}M")
-    print(config)
-    print("=" * 100)
-
-    for step in range(max_steps):
-        t0 = time.time()
-        loss_accum = 0.0
-        optim.zero_grad()
-        optim2.zero_grad()
-        for micro_step in range(grad_accum_steps):
-            xs, ys = dl.next()
-
-            logits = model(xs)
-
-            loss = (
-                F.cross_entropy(logits.view(-1, vocab_size), ys.view(-1))
-                / grad_accum_steps
-            )
-
-            loss.backward()
-
-            norm = nn.utils.clip_grad_norm_(model.parameters(), 1.0).item()
-            loss_accum += loss.detach().item()
-
-        optim.step()
-        optim2.step()
-
-        time_delta = time.time() - t0
-        if use_wandb:
-            run.log(
-                {"step": step, "loss": loss_accum, "time": time_delta, "norm": norm}
-            )
-
-        if step % log_every == 0:
-            print(
-                f"step {step} | loss {loss_accum:.4f} | norm {norm:.4f} | time {time_delta * 1000:.4f}ms"
-            )
-        if step % save_every == 0:
-            torch.save(model.state_dict(), save_dir + f"model_{step:08d}.pth")
 
 
 if __name__ == "__main__":
