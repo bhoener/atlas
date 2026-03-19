@@ -259,41 +259,12 @@ class PolySketchFormer(nn.Module):
 
 
 def main() -> None:
-    import argparse
+    from train_parser import TrainParser
+    parser = TrainParser()
 
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument("--d_model", type=int, default=256)
-    parser.add_argument("--n_heads", type=int, default=8)
-    parser.add_argument("--n_layers", type=int, default=8)
-    parser.add_argument("--vocab_size", type=int, default=50304)
-    parser.add_argument("--seq_len", type=int, default=128)
     parser.add_argument("--r", type=int, default=64)
     parser.add_argument("--p", type=int, default=2)
-    
-    parser.add_argument("--device", type=str, default="cuda")
 
-    parser.add_argument("--max_steps", type=int, default=10000)
-    parser.add_argument("--batch_size", type=int, default=4)
-    parser.add_argument("--grad_accum_steps", type=int, default=8)
-
-    parser.add_argument("--adam_lr", type=float, default=3e-4)
-    parser.add_argument("--muon_lr", type=float, default=3e-6)
-
-    parser.add_argument("--log_every", type=int, default=10)
-    parser.add_argument("--val_every", type=int, default=1000)
-    parser.add_argument("--val_batches", type=int, default=4)
-    parser.add_argument("--save_every", type=int, default=1000)
-
-    parser.add_argument("--save_dir", type=str, default="models/")
-    parser.add_argument("--data_dir", type=str, default="data/")
-    parser.add_argument("--val_data_dir", type=str, default=None)
-
-    parser.add_argument("--compile", type=bool, default=False)
-    parser.add_argument("--use_wandb", type=bool, default=True)
-    parser.add_argument("--wandb_watch", type=bool, default=True)
-    
-    parser.add_argument("--wandb_project_name", type=str, default=None)
 
     args = parser.parse_args()
 
@@ -335,6 +306,7 @@ def main() -> None:
         val_dl=val_dl,
         device=device,
         compile=args.compile,
+        compile_mode=args.compile_mode,
         max_steps=args.max_steps,
         batch_size=args.batch_size,
         grad_accum_steps=args.grad_accum_steps,

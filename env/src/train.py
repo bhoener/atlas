@@ -4,7 +4,6 @@ import torch.nn.functional as F
 from dataloader import DataLoader
 import time
 
-
 def train(
     model: nn.Module,
     optimizers: list[torch.optim.Optimizer],
@@ -14,8 +13,10 @@ def train(
         "cuda:0" if torch.cuda.is_available() else "cpu"
     ),
     compile: bool = False,
+    compile_mode: str = "default",
     max_steps: int = 10000,
     batch_size: int = 4,
+    lr_schedule = None,
     grad_accum_steps: int = 8,
     log_every: int = 10,
     val_every: int = 1000,
@@ -27,17 +28,15 @@ def train(
     wandb_watch: bool = False,
     wandb_config: dict | None = None,
 ) -> None:
-    if use_wandb:
-        import wandb
-
     torch.set_default_device(device)
     torch.set_float32_matmul_precision("high")
     print("Device and precision set")
 
     if compile:
-        model = torch.compile(model)
+        model = torch.compile(model, mode=compile_mode)
 
     if use_wandb:
+        import wandb
         run = wandb.init(
             project=wandb_project_name
             if wandb_project_name is not None
@@ -62,26 +61,33 @@ def train(
         for micro_step in range(grad_accum_steps):
             xs, ys = dl.next()
 
-            logits = model(xs)
+            with torch.amp.autocast(device_type=device.type, dtype=torch.bfloat16):
+                logits = model(xs)
 
-            loss = (
-                F.cross_entropy(logits.view(-1, logits.size(-1)), ys.view(-1))
-                / grad_accum_steps
-            )
+                loss = (
+                    F.cross_entropy(logits.view(-1, logits.size(-1)), ys.view(-1))
+                    / grad_accum_steps
+                )
 
             loss.backward()
 
             norm = nn.utils.clip_grad_norm_(model.parameters(), 1.0).item()
             loss_accum += loss.detach().item()
 
+        lrs = {}
         for optim in optimizers:
+            if lr_schedule is not None:
+                for param_group in optim.param_groups:
+                    lr = lr_schedule(step, optim.defaults["lr"])
+                    param_group["lr"] = lr
+                    lrs[optim.__class__.__name__+"_lr"] = lr
             optim.step()
 
         time_delta = time.time() - t0
         if use_wandb:
-            run.log(
-                {"step": step, "loss": loss_accum, "time": time_delta, "norm": norm}
-            )
+            log_dict = {"step": step, "loss": loss_accum, "time": time_delta, "norm": norm, "tok/s": (xs.numel() * grad_accum_steps) / (time_delta)}
+            log_dict.update(lrs)
+            run.log(log_dict)
 
         if step % val_every == 0 and val_dl is not None:
             with torch.no_grad():
@@ -89,25 +95,28 @@ def train(
                 for _ in range(val_batches):
                     xs, ys = val_dl.next()
 
-                    logits = model(xs)
+                    with torch.amp.autocast(device_type=device.type, dtype=torch.bfloat16):
+                        logits = model(xs)
 
-                    loss = F.cross_entropy(logits.view(-1, logits.size(-1)), ys.view(-1))
+                        loss = F.cross_entropy(
+                            logits.view(-1, logits.size(-1)), ys.view(-1)
+                        )
 
                     loss_accum += loss.item() / val_batches
                 print(
                     f"step {step} | val loss {loss_accum:.4f} | norm {norm:.4f} | time {time_delta * 1000:.4f}ms"
                 )
                 if use_wandb:
-                    run.log(
-                        {"val_loss": loss_accum}
-                    )
+                    run.log({"val_loss": loss_accum})
         elif step % log_every == 0:
             print(
-                f"step {step} | loss {loss_accum:.4f} | norm {norm:.4f} | time {time_delta * 1000:.4f}ms"
+                f"step {step} | loss {loss_accum:.4f} | norm {norm:.4f} | time {time_delta * 1000:.4f}ms | tok/s {(xs.numel() * grad_accum_steps) / (time_delta):.4f}"
             )
 
         if step % save_every == 0:
-            torch.save(model.state_dict(), save_dir + f"model_{int(step /1e3):06d}k.pth")
+            torch.save(
+                model.state_dict(), save_dir + f"model_{int(step / 1e3):06d}k.pth"
+            )
 
 
 if __name__ == "__main__":

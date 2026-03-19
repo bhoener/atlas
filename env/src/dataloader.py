@@ -2,7 +2,6 @@ import os
 import numpy as np
 import torch
 
-
 class DataLoader:
     def __init__(
         self,
@@ -27,7 +26,7 @@ class DataLoader:
         else:
             self.shard_reset()
 
-    def next_shard(self):
+    def next_shard(self) -> None:
         self.current_shard += 1
         if self.current_shard >= self.num_shards:
             self.shard_reset()

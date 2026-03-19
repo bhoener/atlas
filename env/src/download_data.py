@@ -2,11 +2,15 @@ from datasets import load_dataset
 import tiktoken
 import numpy as np
 from tqdm import tqdm
+import os
 enc = tiktoken.get_encoding("gpt2")
-data = load_dataset("Salesforce/wikitext", "wikitext-103-raw-v1", split="train")
+data = load_dataset("HuggingFaceFW/fineweb-edu", "sample-10BT", split="train")
 
 SHARD_SIZE = 10_000_000
-DATA_PATH = "data/"
+DATA_PATH = "fineweb/"
+
+if not os.path.exists(DATA_PATH):
+    os.makedirs(DATA_PATH)
 
 eot = 50256
 
@@ -14,7 +18,7 @@ num_shards = 0
 running_length = 0
 shard = [eot]
 for row in tqdm(data["text"]):
-    encoded = enc.encode(row)
+    encoded = enc.encode(row, disallowed_special=())
     running_length += len(encoded)
     shard.extend(encoded + [eot])
     
