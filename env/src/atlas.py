@@ -69,7 +69,9 @@ class Memory(nn.Module):
         q: torch.Tensor,
         k: torch.Tensor,
         v: torch.Tensor,
+        is_batch: bool = True,
     ) -> tuple[torch.Tensor]:
+        B, H, L, d = q.size()
         (M_w1, M_w2, S_w1, S_w2) = state
         preact = k @ M_w1  # (L, d) x (d, 4d) -> (L, 4d)
 
@@ -85,14 +87,22 @@ class Memory(nn.Module):
             1 / diff.numel() * torch.ones_like(diff, device=q.device)
         )  # (B, H, L, d_k)
 
-        dM_w2 = torch.einsum("bhdi, bhik -> bhidk", l1.transpose(-2, -1), ddiff)
-        dM_w2 = torch.einsum("bhidk, ij -> dk", dM_w2, self.mask)
-        dl1 = ddiff @ M_w2.T  # (B, H, L, d_k) x (d_k, 4d) -> (B, H, L, 4d)
-        dl1preact = (
-            dl1 * l1 * (1 - l1)
-        )  # (B, H, L, 4d) * (B, H, L, 4d) -> (B, H, L, 4d)
-        dM_w1 = torch.einsum("bhdi, bhif -> bhidf", k.transpose(-2, -1), dl1preact)
-        dM_w1 = torch.einsum("bhidf, ij -> df", dM_w1, self.mask)
+        if is_batch:
+            dM_w2 = torch.einsum("bhdi, bhik -> bhidk", l1.transpose(-2, -1), ddiff)
+            dM_w2 = torch.einsum("bhidk, ij -> dk", dM_w2, self.mask)
+            dl1 = ddiff @ M_w2.T  # (B, H, L, d_k) x (d_k, 4d) -> (B, H, L, 4d)
+            dl1preact = (
+                dl1 * l1 * (1 - l1)
+            )  # (B, H, L, 4d) * (B, H, L, 4d) -> (B, H, L, 4d)
+            dM_w1 = torch.einsum("bhdi, bhif -> bhidf", k.transpose(-2, -1), dl1preact)
+            dM_w1 = torch.einsum("bhidf, ij -> df", dM_w1, self.mask)
+        else:
+            dM_w2 = torch.einsum("bhdi, bhik -> dk", l1.transpose(-2, -1), ddiff)
+            dl1 = ddiff @ M_w2.T  # (B, H, L, d_k) x (d_k, 4d) -> (B, H, L, 4d)
+            dl1preact = (
+                dl1 * l1 * (1 - l1)
+            )  # (B, H, L, 4d) * (B, H, L, 4d) -> (B, H, L, 4d)
+            dM_w1 = torch.einsum("bhdi, bhif -> df", k.transpose(-2, -1), dl1preact)
 
         with torch.no_grad():
             S_w1 = (self.theta**self.chunk_size) * S_w1 - torch.diag(
@@ -147,7 +157,7 @@ class Memory(nn.Module):
                 output[:, :, idx] = out
             return output
         else:
-            return self.forward_chunk(state, Q, K, V)
+            return self.forward_chunk(state, Q, K, V, is_batch=False)
 
 
 class CausalConv1d(nn.Conv1d):
@@ -223,7 +233,8 @@ class AtlasLayer(nn.Module):
         K = poly_sketch_non_negative(K, self.r, self.p)
 
         if state is not None:
-            state, mem_out = self.mem(Q, K, V, state).transpose(1, 2).view(B, L, D)
+            state, mem_out = self.mem(Q, K, V, state)
+            mem_out = mem_out.transpose(1, 2).reshape(B, L, D)
             out = self.postnorm(mem_out)
             return state, out * res
         else:
@@ -283,7 +294,8 @@ class AtlasBlock(nn.Module):
 
     def forward(self, x: torch.Tensor, state: tuple[torch.Tensor] | None = None):
         if state is not None:
-            state, x = x + self.atlas_layer(self.pre_rms(x), state)
+            state, x_res = self.atlas_layer(self.pre_rms(x), state)
+            x = x + x_res
             x = x + self.swiglu(self.post_rms(x))
             return state, x
         else:
@@ -335,18 +347,22 @@ class Atlas(nn.Module):
         self.out_proj = nn.Linear(self.d_model, self.vocab_size, bias=False)
         nn.init.orthogonal_(self.out_proj.weight, gain=0.02)
 
+    @property
+    def poly_dim(self):
+        return poly_sketch_non_negative(torch.randn(1, 1, 1, self.d_model // self.n_heads), self.r, self.p).size(-1)
+
     def forward(
-        self, x: torch.Tensor, states: tuple[tuple[torch.Tensor]] | None = None
+        self, x: torch.Tensor, states: list[tuple[torch.Tensor]] | None = None
     ) -> torch.Tensor:
         B, L = x.size()
 
         x = self.emb(x)
 
         x = x + self.pos_emb(torch.arange(0, L).to(x.device))
-
+        
         if states is not None:
-            for i, layer in self.layers:
-                states[i], x = layer(x)
+            for i, layer in enumerate(self.layers):
+                states[i], x = layer(x, states[i])
 
             return states, self.out_proj(x)
         else:
