@@ -109,14 +109,10 @@ class Memory(nn.Module):
         with torch.no_grad():
             S_w1 = (self.theta**self.chunk_size) * S_w1 - torch.diag(
                 torch.ones(dM_w1.size(0), device=q.device) * self.theta
-            ) @ torch.diag(
-                torch.ones(dM_w1.size(0), device=q.device) * self.lr
-            ) @ dM_w1
+            ) @ torch.diag(torch.ones(dM_w1.size(0), device=q.device) * self.lr) @ dM_w1
             S_w2 = (self.theta**self.chunk_size) * S_w2 - torch.diag(
                 torch.ones(dM_w2.size(0), device=q.device) * self.theta
-            ) @ torch.diag(
-                torch.ones(dM_w2.size(0), device=q.device) * self.lr
-            ) @ dM_w2
+            ) @ torch.diag(torch.ones(dM_w2.size(0), device=q.device) * self.lr) @ dM_w2
             S_w1 = newtonschulz5(S_w1)
             S_w2 = newtonschulz5(S_w2)
             M_w1 = self.alpha * M_w1 + S_w1
@@ -164,6 +160,7 @@ class Memory(nn.Module):
 
 class CausalConv1d(nn.Conv1d):
     def __init__(self, in_channels: int, out_channels: int, kernel_size: int):
+        """Conv1d but with causal padding (kernel_size - 1)"""
         self.__padding = kernel_size - 1
         super().__init__(
             in_channels=in_channels,
@@ -180,6 +177,17 @@ class AtlasLayer(nn.Module):
     def __init__(
         self, d_model: int, n_heads: int, r: int = 16, p: int = 2, chunk_size: int = 4
     ):
+        """
+        ATLAS layer
+        Linear projections for q, k, v followed by conv and polynomial mapping,
+        residual at the end
+
+        d_model (int): dimension of wq, wk, wv
+        n_heads (int): number of heads to split d_model across
+        r (int): size for polysketch
+        p (int): degree of polysketch
+        chunk_size (int): number of tokens to process at a time in memory
+        """
         super().__init__()
         self.d_model = d_model
         self.n_heads = n_heads
@@ -246,22 +254,27 @@ class AtlasLayer(nn.Module):
 
 
 class SwiGLU(nn.Module):
-    def __init__(self, in_size: int, out_size: int, beta: float = 1.0):
+    def __init__(
+        self, in_size: int, hidden_size: int, out_size: int, beta: float = 1.0
+    ):
+        """SwiGLU as described in https://arxiv.org/abs/2002.05202"""
         super().__init__()
         self.in_size = in_size
         self.out_size = out_size
         self.beta = beta
 
-        self.W = nn.Linear(in_size, out_size)
-        self.V = nn.Linear(in_size, out_size)
+        self.W = nn.Linear(in_size, hidden_size)
+        self.V = nn.Linear(in_size, hidden_size)
 
         self.sigmoid = nn.Sigmoid()
+
+        self.W2 = nn.Linear(hidden_size, out_size)
 
     def swish(self, x: torch.Tensor) -> torch.Tensor:
         return x * self.sigmoid(self.beta * x)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return self.swish(self.W(x)) * self.V(x)
+        return self.W2(self.swish(self.W(x)) * self.V(x))
 
 
 class AtlasBlock(nn.Module):
@@ -274,6 +287,17 @@ class AtlasBlock(nn.Module):
         chunk_size: int = 4,
         swiglu_beta: float = 1.0,
     ):
+        """
+        ATLAS Block
+        Implemented as shown in the paper, with pre- and pos- rmsnorm, residual and swiglu
+
+        d_model (int): dimension for wq, wk, wv in layer
+        n_heads (int): number of heads to split d_model across
+        r (int): polysketch size
+        p (int): polysketch degree
+        chunk_size (int): number of tokens to be processed in parallel in memory
+        swiglu_beta (float): beta value for swiglu (usually 1)
+        """
         super().__init__()
         self.d_model = d_model
         self.n_heads = n_heads
@@ -292,7 +316,9 @@ class AtlasBlock(nn.Module):
 
         self.post_rms = nn.RMSNorm(d_model)
 
-        self.swiglu = SwiGLU(in_size=d_model, out_size=d_model, beta=swiglu_beta)
+        self.swiglu = SwiGLU(
+            in_size=d_model, hidden_size=d_model * 4, out_size=d_model, beta=swiglu_beta
+        )
 
     def forward(self, x: torch.Tensor, state: tuple[torch.Tensor] | None = None):
         if state is not None:
@@ -319,6 +345,18 @@ class Atlas(nn.Module):
         chunk_size: int = 4,
         swiglu_beta: int = 1,
     ):
+        """
+        ATLAS
+
+        vocab_size (int): number of embeddings to store
+        d_model (int): dimension of the weights
+        n_heads (int): number of heads to split d_model across
+        seq_len (int): max positions for pos_emb
+        r (int): polysketch size
+        p (int): polysketch degree
+        chunk_size (int): number of tokens to be processed in parallel in memory
+        swiglu_beta (float): beta value for swiglu (usually 1)
+        """
         super().__init__()
 
         self.vocab_size = vocab_size
@@ -351,7 +389,9 @@ class Atlas(nn.Module):
 
     @property
     def poly_dim(self):
-        return poly_sketch_non_negative(torch.randn(1, 1, 1, self.d_model // self.n_heads), self.r, self.p).size(-1)
+        return poly_sketch_non_negative(
+            torch.randn(1, 1, 1, self.d_model // self.n_heads), self.r, self.p
+        ).size(-1)
 
     def forward(
         self, x: torch.Tensor, states: list[tuple[torch.Tensor]] | None = None
@@ -361,7 +401,7 @@ class Atlas(nn.Module):
         x = self.emb(x)
 
         x = x + self.pos_emb(torch.arange(0, L).to(x.device))
-        
+
         if states is not None:
             for i, layer in enumerate(self.layers):
                 states[i], x = layer(x, states[i])
