@@ -34,6 +34,7 @@ class Memory(nn.Module):
         chunk_size: int = 4,
         alpha: float = 0.9,
         theta: float = 0.95,
+        lr: float = 0.25,
     ):
         """
         ATLAS memory module
@@ -54,6 +55,7 @@ class Memory(nn.Module):
 
         self.alpha = alpha
         self.theta = theta
+        self.lr = lr
 
         assert d_model % n_heads == 0
 
@@ -108,12 +110,12 @@ class Memory(nn.Module):
             S_w1 = (self.theta**self.chunk_size) * S_w1 - torch.diag(
                 torch.ones(dM_w1.size(0), device=q.device) * self.theta
             ) @ torch.diag(
-                torch.ones(dM_w1.size(0), device=q.device) * self.alpha
+                torch.ones(dM_w1.size(0), device=q.device) * self.lr
             ) @ dM_w1
             S_w2 = (self.theta**self.chunk_size) * S_w2 - torch.diag(
                 torch.ones(dM_w2.size(0), device=q.device) * self.theta
             ) @ torch.diag(
-                torch.ones(dM_w2.size(0), device=q.device) * self.alpha
+                torch.ones(dM_w2.size(0), device=q.device) * self.lr
             ) @ dM_w2
             S_w1 = newtonschulz5(S_w1)
             S_w2 = newtonschulz5(S_w2)
