@@ -1,0 +1,11 @@
+*.pth
+*.pt
+*.pytest_cache
+*.vscode
+*.npy
+env/Lib
+env/Scripts
+env/share
+env/Include
+env/src/__pycache__
+env/wandb/
